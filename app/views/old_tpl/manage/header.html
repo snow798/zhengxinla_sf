@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="">
+    <title>征信拉查询系统</title>
+    <link rel="icon" href="{{__static}}/images/favicon.ico" />
+    <link href="{{__static}}/css/font-lato.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{__static}}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{__static}}/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{__static}}/css/aui-font.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{__static}}/css/module/header/header.css" />
+    <link href="{{__static}}/css/reset.css" rel="stylesheet">
+    <link href="{{__static}}/css/basic.css" rel="stylesheet">
+</head>
+<body>
+<div class="aui">
+    <div class="navbar navbar-fixed-top scroll-hide">
+        <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0;" id="border_bo_fff">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand ben_login" href="/"></a>
+                </div>
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2" style="height: 1px;">
+                    <ul class="nav nav-pills navlist" role="tablist">
+                        <li role="presentation"><a href="/manage/">会员管理</a></li>
+                        {% if issuper %}
+                        <li role="presentation"><a href="/manage/admin">管理员账号</a></li>
+                        {% endif %}
+                        <li role="presentation"><a href="/feedback/list">反馈列表</a></li>
+                        <li role="presentation"><a href="/manage/logout">[退出]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<hr/>
+<div class="container" id="admin_cont">

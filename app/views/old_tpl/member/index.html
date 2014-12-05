@@ -1,0 +1,55 @@
+{{partial("public/header")}}
+<div class="row hao_tab">
+  <div class="panel panel-default rest_ko">
+      <!-- Default panel contents -->
+      <div class="panel-heading">公司资料
+          <a href="/member/password" class="float_right" style="margin-left: 20px;">修改密码</a>
+          <a href="/member/edit" class="float_right">修改资料</a>
+      </div>
+      
+      <div class="panel-body basic_form ">
+          <div class="col-md-2"></div>
+          <div class=" col-md-12 col-xs-12 " id="check_table">
+              <table class="table table-hover">
+                  <thead>
+                  <tr>
+                      <th colspan="2"  id="check_copmtitle"><h1 style="margin-top: 0;">{{info['companyname']}}</h1></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                      <td>公司全称</td>
+                      <td>&nbsp;&nbsp;{{info['companyname']}}</td>
+                  </tr>
+                  <tr>
+                      <td>地址</td>
+                      <td>&nbsp;&nbsp;{{info['address']}}</td>
+
+                  </tr>
+
+                  <tr>
+                      <td>电子邮件</td>
+                      <td>&nbsp;&nbsp;{{info['email']}}</td>
+                  </tr>
+
+                  <tr>
+                      <td>联系人1：{{info['contact1']}}</td>
+                      <td>&nbsp;&nbsp;{{info['contact1_phone']}}</td>
+                  </tr>
+
+                  <tr>
+                      <td>联系人2：{{info['contact2']}}</td>
+                      <td>&nbsp;&nbsp;{{info['contact2_phone']}}</td>
+                  </tr>
+
+                  </tbody>
+              </table>
+
+          </div>
+      </div>
+    </div>
+  </div>
+{{partial("public/globalscript")}}
+<script src="{{__static}}js/default/menber/index.js"></script>
+{{partial("public/footer")}}
+

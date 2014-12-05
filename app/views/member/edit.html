@@ -1,0 +1,55 @@
+<div class="row hao_tab" id="edit_main">
+	<div class="panel panel-default rest_ko">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">{{info['companyname']}}资料</div>
+	  <!-- Table -->
+        <div class="panel-body">
+            <form class="form-horizontal basic_form"  id="commentForm">
+                <input type="hidden" name="memberid" value="{{info['memberid']}}" />
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-4">公司地址</label>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" name="address" value="{{info['address']}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-4">电子邮件</label>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" name="email" value="{{info['email']}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-4">公司联系人</label>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" name="contact1" value="{{info['contact1']}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-4">联系人电话</label>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" name="contact1_phone" value="{{info['contact1_phone']}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-4">第二联系人</label>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" name="contact2" value="{{info['contact2']}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-4">联系人电话</label>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" name="contact2_phone" value="{{info['contact2_phone']}}">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="control-label col-xs-6 col-md-4"></label>
+                    <div class="col-xs-12 col-md-4">
+                        <button class="btn btn-primary btn-lg" id="member-edit-submit">保存资料</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+	</div>
+</div>

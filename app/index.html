@@ -1,0 +1,148 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/basic.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="zhengxinlaSfApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="container-fluid" style="padding: 0;">
+    <div class="header">
+        <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0;" id="border_bo_fff">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand ben_login" href="/"></a>
+                </div>
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2" style="height: 1px;">
+                    <ul class="nav nav-pills navlist" role="tablist">
+                        <li role="presentation"><a href="#/search/index">查询</a></li>
+                        <li role="presentation"><a href="#/member/loanlist">借贷管理</a></li>
+                        <li role="presentation"><a href="#/feedback/add">意见反馈</a></li>
+                        <li role="presentation"><a href="#/member/">{{userinfo['username']}}</a></li>
+                        <li role="presentation"><a href="#/member/logout">[退出]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div ng-view="to" style="width: 1000px; margin: 0 auto;"></div>
+    <div class="datouwang8" id="loadingIco">
+        <div class="datouwang8-container container1">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="datouwang8-container container2">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="datouwang8-container container3">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> 征信啦 angular测试</p>
+        <!--<ul class="nav nav-pills pull-right">
+            <li class="active"><a ng-href="#">Home</a></li>
+            <li><a ng-href="#/about">About</a></li>
+            <li><a ng-href="#">Contact</a></li>
+            <li><a ng-href="#/member/login">login</a></li>
+        </ul>-->
+    </div>
+</div>
+
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.js -->
+<script src="scripts/bundle.js"></script>
+<!-- bower:js -->
+<!--<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>-->
+<!-- endbower -->
+<!-- endbuild -->
+<script src="../bower_components/bootstrap/js/modal.js"></script>
+<script src="../bower_components/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../bower_components/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!--<script src="scripts/app.js"></script>-->
+
+<script src="scripts/service.js"></script>
+<script src="scripts/directive.js"></script>
+<script src="scripts/verification.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/member/login.js"></script>
+<script src="scripts/controllers/member/index.js"></script>
+<script src="scripts/controllers/member/edit.js"></script>
+<script src="scripts/controllers/member/password.js"></script>
+<script src="scripts/controllers/member/loanlist.js"></script>
+<script src="scripts/controllers/member/addloan.js"></script>
+<script src="scripts/controllers/search/index.js"></script>
+<script src="scripts/controllers/search/detail.js"></script>
+<!-- endbuild -->
+<script>
+    $(document).ready(function () {
+        /*var _send = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.send = function () {
+            $('#loadingIco').show();
+            _send.apply(this, arguments)
+        };
+        var _getAllResponseHeaders = XMLHttpRequest.prototype.getAllResponseHeaders;
+        XMLHttpRequest.prototype.getAllResponseHeaders = function(){
+            if(this.readyState >3){
+                $('#loadingIco').hide();
+            }
+            _getAllResponseHeaders.apply(this, arguments)
+        }*/
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{{partial("public/header")}}
+
+<div class="h-50 hidden-print"></div>
+<div class="row hidden-print hidden-xs hidden-sm">
+    <a class="btn btn-primary pull-right" onclick="javascript:window.print();"><i class="fa fa-print"></i>立即打印</a>
+</div>
+<div class="h-50 hidden-print"></div>
+{{partial("module/table")}}
+{{partial("public/globalscript")}}
+<script src="{{__static}}js/default/search/detail.js"></script>
+{{partial("public/footer")}}

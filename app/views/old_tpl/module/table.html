@@ -1,0 +1,393 @@
+<style>
+  html {overflow-y:scroll;}
+</style>
+
+<div id="info-detail" ms-controller="info-detail">
+    <div  ms-if="userinfo.searchtype == 1">
+    <div class="row"  ms-if="userinfo.$model">
+        <h2>个人信用报告</h2>
+        <p></p>
+        <table class="table table-striped table-bordered" >
+            <thead>
+                <tr>
+                    <th width="15%">被查询者姓名</th>
+                    <th width="25%">被查询者证件类型</th>
+                    <th width="25%">被查询者证件号码</th>
+                    <th width="15%">查询操作员</th>
+                    <th width="15%">查询原因</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{$userinfo.realname$}</td>
+                    <td>{$userinfo.cardtype$}</td>
+                    <td>{$userinfo.cardnumber$}</td>
+                    <td>{$userinfo.operator$}</td>
+                    <td>{$userinfo.reason$}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <div class="row uniform"  ms-if="totalinfo.$model">
+            <h2>授信及负债信息概要</h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>贷款法人机构数</th>
+                    <th>贷款机构数</th>
+                    <th>笔数</th>
+                    <th>合同总额(万元)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{$totalinfo.legal_agency_num$}</td>
+                    <td>{$totalinfo.agency_num$}</td>
+                    <td>{$totalinfo.loan_num$}</td>
+                    <td>{$totalinfo.amount$}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row ">
+            <h2>负债信息明细</h2>
+            <div>
+
+                <table class="table table-striped table-bordered m-b-0 table-hover">
+                    <thead>
+                    <tr>
+                        <th  style="width: 10%;">时间</th>
+                        <th  style="width: 10%;">放款机构</th>
+                        <th  style="width: 10%;">金额(万元)</th>
+                        <th  style="width: 10%;">还款方式</th>
+                        <th  style="width: 10%;">逾期状态</th>
+                        <th  style="width: 20%;">贷款状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ms-repeat-row="loanlist" ms-if="loanlist.$model">
+                        <td>{$row.addtime$}</td>
+                        <td>
+                            <a href="javascript:;" class="showcomp" ms-click="showCInfo(row.companyid)" ms-attr-data-id="{$row.companyid$}">{$company[row.companyid]$}</a>
+                            </td>
+                        <td>{$row.amount$}</td>
+                        <td>
+                            <span ms-if="row.repay_method == 'e'">到期还本息</span>
+                            <span ms-if="row.repay_method == 'm'">按月等额本息</span>
+                            <span ms-if="row.repay_method == 'i'">按月付息，到期还本</span>
+                            <span ms-if="row.repay_method == 'o'">等本等息</span>
+                        </td>
+                        <td >
+                            <span ms-if="row.overdue !=='0'">
+                                <a href="javascript:;" class="showcomp" ms-click="showCInfo_yuqi(row.id)" ms-attr-data-id="{$row.id$}">逾期{$row.overdue$}次</a></span>
+                            <span ms-if="row.overdue =='0'">-</span>
+                        </td>
+
+                        <td>
+                            <span ms-if="row.status == '51'">还款成功</span>
+                            <span ms-if="row.status == '41'">还款中</span>
+                            <span ms-if="row.status == '99'">逾期中</span>
+                        </td>
+                    </tr>
+                    <tr ms-if="!loanlist.$model"><td  colspan="6" style="text-align: center;">
+                        没有数据 {$ loanlist.$model $}
+                    </td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row uniform"  ms-if="guarantee_info.$model">
+            <h2>担保信息概要</h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>笔数</th>
+                    <th>合同总额(万元)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{$guarantee_info.count$}</td>
+                    <td>{$guarantee_info.amount$}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row ">
+            <h2>担保信息明细</h2>
+            <div>
+                <table class="table table-striped table-bordered m-b-0 table-hover">
+                    <thead>
+                    <tr>
+                        <th width="15%">时间</th>
+                        <th width="25%">被担保机构</th>
+                        <th width="25%">担保金额(万元)</th>
+                        <th width="15%">还款方式</th>
+                        <th width="15%">贷款状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ms-repeat-row="guarantee" ms-if="guarantee.$model">
+                        <td>{$row.addtime$}</td>
+                        <td>
+                            <a href="javascript:;" class="showcomp" ms-click="showCInfo(row.companyid)" ms-attr-data-id="{$row.companyid$}">{$row.companyname$}</a>
+                        </td>
+                        <td>{$row.amount$}</td>
+                        <td>
+                            <span ms-if="row.repay_method == 'e'">到期还本息</span>
+                            <span ms-if="row.repay_method == 'm'">按月等额本息</span>
+                            <span ms-if="row.repay_method == 'i'">按月付息，到期还本</span>
+                            <span ms-if="row.repay_method == 'o'">等本等息</span>
+                        </td>
+                        <td>
+                            <span ms-if="row.status == '51'">还款成功</span>
+                            <span ms-if="row.status == '41'">还款中</span>
+                            <span ms-if="row.status == '99'">逾期中</span>
+                        </td>
+                    </tr>
+                    <tr ms-if="!guarantee.$model"><td  colspan="5" style="text-align: center;">
+                        没有数据
+                    </td></tr>
+                    </tbody>
+                </table>
+                <br/>
+            </div>
+        </div>
+
+
+        <div class="row"  ms-if="record.$model">
+        <h2>信贷审批查询记录明细</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>查询日期</th>
+                    <th>查询操作员</th>
+                    <th>查询原因</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ms-repeat-ed="record.list">
+                    <td>{$ ed.record_id $}</td>
+                    <td>{$ ed.addtime $}</td>
+                    <td>{$ ed.operator $}
+                    </td>
+                    <td>
+                        {$ reason[ed.reason] $}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!--公司查询部分-->
+
+
+ <div  ms-if="userinfo.searchtype == 2">
+        <div class="row"  ms-if="userinfo.$model">
+            <h2>机构担保报告</h2>
+            <p></p>
+            <table class="table table-striped table-bordered" >
+                <thead>
+                <tr>
+                    <th>被查询机构名称</th>
+                    <th>被查询组织机构代码</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{$userinfo.guarantee_name$}</td>
+                    <td>{$userinfo.guarantee_no$}</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+     <div class="row uniform"  ms-if="guarantee_info.$model">
+         <h2>担保信息概要</h2>
+         <table class="table table-striped table-bordered">
+             <thead>
+             <tr>
+                 <th>笔数</th>
+                 <th>合同总额(万元)</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td>{$guarantee_info.count$}</td>
+                 <td>{$guarantee_info.amount$}</td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+
+        <div class="row ">
+            <h2>担保信息明细</h2>
+            <div>
+
+                <table class="table table-striped table-bordered m-b-0 table-hover">
+                    <thead>
+                    <tr>
+                        <th  style="width: 10%;">时间</th>
+                        <th  style="width: 20%;">被担保机构</th>
+                        <th  style="width: 10%;">担保金额(万元)</th>
+                        <th  style="width: 10%;">还款方式</th>
+                        <th  style="width: 20%;">贷款状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ms-repeat-row="loanlist" ms-if="loanlist.$model">
+                        <td>{$row.addtime$}</td>
+                        <td><a href="javascript:;" class="showcomp" ms-click="showCInfo(row.companyid)" ms-attr-data-id="{$row.companyid$}">{$row.companyname$}</a></td>
+                        <td>{$row.amount$}</td>
+                        <td>
+                            <span ms-if="row.repay_method == 'e'">到期还本息</span>
+                            <span ms-if="row.repay_method == 'm'">按月等额本息</span>
+                            <span ms-if="row.repay_method == 'i'">按月付息，到期还本</span>
+                            <span ms-if="row.repay_method == 'o'">等本等息</span>
+
+                        </td>
+                        <td>
+                            <span ms-if="row.status == '51'">还款成功</span>
+                            <span ms-if="row.status == '41'">还款中</span>
+                            <span ms-if="row.status == '99'">逾期中</span>
+                        </td>
+                    </tr>
+                    <tr ms-if="!loanlist.$model"><td  colspan="5" style="text-align: center;">
+                        没有数据 {$ loanlist.$model $}
+                    </td></tr>
+                    </tbody>
+                </table>
+         </div>
+        </div>
+
+     <div class="row"  ms-if="record.$model">
+         <h2>信贷审批查询记录明细</h2>
+         <table class="table table-striped table-bordered" >
+             <thead>
+             <tr>
+                 <th>编号</th>
+                 <th>查询日期</th>
+                 <th>查询操作员</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr ms-repeat-ed="record.list">
+                 <td>{$ ed.record_id $}</td>
+                 <td>{$ ed.addtime $}</td>
+                 <td>{$ ed.operator $}
+                 </td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+
+
+</div>
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">被担保人信息</h4>
+                    </div>
+                    <div class="modal-body" style=" padding: 0;">
+                        <div class=" col-md-12 col-xs-12 " id="check_table">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th colspan="2"  id="check_copmtitle"><h1><span class="show_companyname"></span></h1></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>公司全称</td>
+                                    <td>&nbsp;&nbsp;<span class="show_companyname"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>地址</td>
+                                    <td>&nbsp;&nbsp;<span class="show_address"></span></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>电子邮件</td>
+                                    <td>&nbsp;&nbsp;<span class="show_email"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <blockquote class="container-fluid"  style="border: solid 1px #f2f2f2; border-left: solid 5px #f2f2f2;height: auto; overflow: auto;">
+                                <div class="row-fluid">
+                                    <div class="col-xs-12 col-md-6">
+                                        <p class="member_ca"> 联系人1：<span class="show_contact1"></span></p>
+                                        电话：<cite><span class="show_contact1_phone"></span></cite>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <p class="member_ca"> 联系人2：<span class="show_contact2"></span></p>
+                                        电话：<cite><span class="show_contact2_phone"></span></cite>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!--逾期信息展示-->
+    <div class="modal fade" id="myModal_yuqi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">逾期详情</h4>
+                    </div>
+                    <div class="modal-body" style=" padding: 0;">
+                        <table class="table table-striped table-hover" id="yuqi_text">
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <script type="text/html" id="yuqi_modle">
+        <tbody>
+        <tr>
+            <td  width="15%">逾期金额</td>
+            <td  width="25%">逾期起始时间</td>
+            <td  width="25%">逾期结束时间</td>
+            <td  width="20%" >目前状态</td>
+        </tr>
+        {each list as loan i}
+        <tr>
+            <td  >{loan.money}</td>
+            <td  >{loan.begin_time}</td>
+            <td  >{loan.end_time}</td>
+            <td  >
+                {loan.status}&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
+        </tbody>
+        {/each}
+    </script>

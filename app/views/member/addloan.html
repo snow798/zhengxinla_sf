@@ -1,0 +1,185 @@
+
+  <div class="row hao_tab">
+      <div class="panel panel-default rest_ko">
+          <!-- Default panel contents -->
+          <div class="panel-heading">新增借款</div>
+
+          <div class="panel-body">
+	      <!-- Table -->
+	      <form class="form-horizontal basic_form css-form" role="form" name="addloanFrom" ng-submit="submint()" novalidate>
+
+              <input type="hidden" value="{{__token__}}" name="token">
+
+              <div class="form-group">
+                  <label class="control-label col-xs-6 col-md-3">借款人姓名</label>
+                  <div class="col-xs-12 col-md-3">
+                      <div class="input-group">
+                      <input data-ng-model="vm.realname" name="realname" type="text" class="form-control" ng-maxlength="10" chinesename required>
+                      <span class="input-group-addon getInfo" data-type="a" style="cursor: pointer;"><span class="glyphicon glyphicon-search"></span></span>
+                      </div>
+                      <label ng-show="submintStatus" class="error">
+                          <span ng-show="addloanFrom.realname.$pristine">借款人姓名不能为空！</span>
+                          <span ng-show="addloanFrom.realname.$error.chinesename">用户名只能为中文字符</span>
+                      </label>
+                  </div>
+              </div>
+
+
+
+              <div class="form-group">
+                  <label class="control-label col-xs-6 col-md-3">借款人身份证号</label>
+                  <div class="col-xs-12 col-md-3">
+                      <input data-ng-model="vm.idcard" id="idcard" name="idcard" type="text" maxlength="18"  class="form-control" chinaid required>
+                      <label ng-show="submintStatus" class="error">
+                          <span ng-show="addloanFrom.idcard.$pristine">借款人身份证号不能为空！</span>
+                          <span ng-show="addloanFrom.idcard.$error.chinaid">身份证号无效</span>
+                      </label>
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                  <label class="control-label col-xs-6 col-md-3">确认身份证号</label>
+                  <div class="col-xs-12 col-md-3">
+                      <input data-ng-model="vm.idcard_confirm" name="idcard_confirm" type="text" maxlength="18"  class="form-control" chinaid equality="#idcard" required>
+                      <label ng-show="submintStatus" class="error">
+                          <span ng-show="addloanFrom.idcard_confirm.$pristine">身份ID校验码不能为空！</span>
+                          <span ng-show="addloanFrom.idcard_confirm.$error.chinaid">身份ID校验码无效</span>
+                          <span ng-show="addloanFrom.idcard_confirm.$error.equality && addloanFrom.idcard_confirm.$error.chinaid == false ">校验码不相等</span>
+                      </label>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="control-label col-xs-6 col-md-3">借款金额</label>
+                  <div class="col-xs-12 col-md-3">
+                      <div class="input-group">
+                          <input data-ng-model="vm.amount" name="amount" type="text" class="form-control" ng-pattern="/^\d+?/" required>
+                          <span class="input-group-addon">万元</span>
+                      </div>
+                      <label ng-show="submintStatus" class="error">
+                          <span ng-show="addloanFrom.amount.$pristine">该字段不为空！</span>
+                          <span ng-show="addloanFrom.amount.$error.pattern">只能为数字</span>
+                      </label>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="dtp_input2" class="control-label col-xs-6 col-md-3">借款日期</label>
+                  <div class="col-xs-12 col-md-4">
+                  <div class="input-group date form_date " data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width: 100%;">
+                      <input data-ng-model="vm.addtime" class="form-control" size="16" type="text" name="addtime" readonly style="width: 50%;" required>
+                      <!--<span class="input-group-addon" style=" display: block; "><span class="glyphicon glyphicon-remove"></span></span>-->
+                      <span class="input-group-addon2" style="display: block; height: 34px; line-height: 34px; border: 1px #f2f2f2 solid; width: 40px; text-align: center; float: left; "><span class="glyphicon glyphicon-th"></span></span>
+                      <input type="hidden" id="dtp_input2" value="" /><br/>
+                  </div>
+                      <label ng-show="submintStatus" class="error">
+                          <span ng-show="addloanFrom.addtime.$pristine">该字段不为空！</span>
+                      </label>
+
+                      </div>
+              </div>
+
+              <div class="form-group clear">
+                  <label class="control-label col-xs-6 col-md-3">贷款期限</label>
+                  <div class="col-xs-12 col-md-3">
+                      <div class="input-group">
+                         <!-- <input type="text" class="form-control" name="deadline" max="36">
+                          <span class="input-group-addon">月</span>-->
+                          <input data-ng-model="vm.deadline" name="deadline" type="text" class="form-control" ng-pattern="/^\d+?/" required>
+                          <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-ng-click=" isopen= true">
+                                  <span ng-show=" n_deadline_type== 'm'" id="long_time" data-time="m">月</span>
+                                  <span ng-show=" n_deadline_type== 'd'" id="long_time2" data-time="m">天</span>
+                                  <span class="caret"></span></button>
+
+                              <ul ng-show="isopen" class="dropdown-menu dropdown-menu-right" role="menu" style="display: block;">
+                                  <li><a href="javascript:;" class="long_month" ng-click=" n_deadline_type= 'm'; isopen= false ">月</a></li>
+                                  <li><a href="javascript:;" class="long_day" ng-click=" n_deadline_type= 'd'; isopen= false ">天</a></li>
+                              </ul>
+                          </div>
+                      </div>
+
+                      <label ng-show="submintStatus" class="error">
+                          <span ng-show="addloanFrom.deadline.$pristine">该字段不为空！</span>
+                          <span ng-show="addloanFrom.deadline.$error.pattern">只能为数字</span>
+                      </label>
+                  </div>
+              </div>
+
+              <div class="form-group clear">
+	      		<label class="control-label col-xs-6 col-md-3">还款方式</label>
+	      		<div class="col-xs-12 col-md-3">
+	      			<select data-ng-model="vm.repay_method" class="form-control" name="repay_method">
+		              <option value='m' ng-selected="true">按月等额本息</option>
+		              <option value='i'>按月付息，到期还本</option>
+		              <option value='o'>等本等息</option>
+		            </select>
+
+	      		</div>
+	      	</div>
+              <div class="form-group" style="height: auto;">
+                  <label class="control-label col-xs-7 col-md-3">担保方式</label>
+                  <div class="col-xs-12 col-md-9">
+                      <div class=" panel panel-default">
+
+                          <div class="panel-body">
+                              <div class="col-xs-12 col-md-12">
+                                  <div class="form-group form-group-sm" id="addCont" style="height:auto">
+
+                                      <div class="up2"  data-ng-repeat=" ltem in guaranteeCount ">
+                                          <label class="col-xs-12 col-md-2 txtup" style="padding-left:0;text-align:left;margin-right:10px" data-sid="0">
+                                              <select class="form-control modClass" name="modClass">
+                                                  <option value="1">个人担保</option>
+                                                  <option value="2">机构担保</option>
+                                              </select>
+                                          </label>
+                                          <div class="col-xs-12 col-md-4" style="padding-left:0">
+                                              <input data-ng-model="name" placeholder="姓名或公司名称" class="companyName form-control isName" type="text" id="companyName0" name="companyName" chinesename>
+                                          </div>
+                                          <div class="col-xs-12 col-md-4 ispadd" style="padding-left:0">
+                                              <input data-ng-model="idcard" maxlength="18" placeholder="身份证号码或组织机构代码" class="companyId form-control isID" type="text" id="companyId0" name="companyId" chinaid >
+                                          </div>
+                                          <label data-ng-click="deleatLtem($index)" class="col-xs-12 col-md-1 txtup lsdete comp del0" style="padding-left:0" data-sid="0">删除</label>
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-xs-12 col-md-12" style="padding-left:0">
+                                  <a data-ng-click="addGuarantee()" href="javascript:;" id="addRow" style="float:left;margin-top:0;clear:both">添加担保方式</a>
+                                  <label ng-show="submintStatus" class="error" style="clear: none; margin-top: 2px;">
+                                      &nbsp; &nbsp; &nbsp;
+                                      <span ng-show="addloanFrom.companyName.$invalid">姓名或公司名称输入有误.</span>
+                                      <span ng-show="addloanFrom.companyId.$invalid">&nbsp;&nbsp;身份证号码或组织机构代码输入有误</span>
+                                  </label>
+                              </div>
+                          </div>
+
+
+                      </div>
+
+                          </div>
+                  </div>
+
+              <div class="form-group remstatus clear">
+                  <label class="control-label col-xs-6 col-md-3">贷款状态</label>
+                  <div class="col-xs-12 col-md-2">
+                      <select data-ng-model="vm.status" class="form-control" name="status">
+                          <option value=41 ng-selected="true">还款中</option>
+                          <option value=99>逾期中</option>
+                          <option value=51>还款成功</option>
+                      </select>
+                  </div>
+              </div>
+	      	<div class="form-group submint">
+	      		<label class="vm.control-label col-xs-6 col-md-3"></label>
+	      		<div class="col-xs-12 col-md-4">
+	      			<button type="submit" class="submit btn btn-primary btn-lg" >提交借款</button>
+	      		</div>
+	      	</div>
+	      </form>
+	   </div>
+
+    </div>
+  </div>
+

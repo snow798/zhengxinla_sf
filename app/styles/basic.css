@@ -1,0 +1,75 @@
+
+/*不同分辨率终端样式独立适配
+ *
+ */
+
+
+/*
+超小屏幕设备 手机 (<768px)
+*/
+@media screen and (max-width: 768px) {
+    * { font-size: 12px; font-weight: normal; font-family: Segoe UI, Arial, Verdana, Tahoma, sans-serif;}
+    #check_copmtitle { font-size: 16px; padding-bottom: 10px;}
+    .txtup { text-align: left; height: 34px; line-height: 34px; font-weight: normal; padding-right: 20px; padding-left: 0;}
+    .txtup .col-md-3 { padding-left: 0;}
+    .up1, .up2 { margin-bottom: 20px; margin-top: 5px; height: 110px;}
+    .submint { padding-top: 20px;}
+    #border_bo_fff { border-bottom: 1px solid #fff;background: #f2f2f2; border: 0;}
+    #bs-example-navbar-collapse-2 { border: 0;  box-shadow: 0 2px 3px rgba(0,0,0,0.2); margin-bottom: 2px;}
+    .navbar .navlist{ width: 100%; float: left; margin: 10px;}
+    .navbar .navlist > li {float: none; box-shadow: 0 1px 5px 0 #F2F2F2;}
+    .navbar .navlist > li > a { height: 43px; line-height: 43px; padding: 0; padding-left: 15px; color: #999999; width: 100%; border-radius: 0;}
+    .navbar .navlist > li > a:hover { background: #aaa; color: #fff}
+    .member_ca { margin-bottom: 0;}
+    .logo{ width: 100%; height: 100px; display: block;  margin: 60px 0 0 0; background: url(/public/images/site/logo.png) no-repeat center; background-size: 50%;}
+    .ispadd { margin-top: 10px;}
+    .lsdete { text-align: center; color: #307ECC; cursor: pointer;}
+    .lsdete2 { display: none;}
+    .logo_css .panel,.logo_css .panel {}
+    .member_index {}
+    .basic_form { padding: 5% 0;}
+    .yuqi_btn { display: none;}
+    .yuqi_btn_shouji { display: block;}
+    .yuqi_input { padding: 0;}
+    .yuqi_select { width: 40px;}
+    .loan_select { width: 100px;}
+    .body_set {}
+    .loan_list {width: 100%; margin-bottom: 5px; padding-bottom: 5px;}
+    .loanlist .loan_deadline .input-group-btn .btn_load_sj {border-top-left-radius: 4px;border-bottom-left-radius: 4px;}
+    }
+
+/*  (≥768px)*/
+@media screen and (min-width: 768px) {
+    #check_copmtitle { font-size: 24px; padding-bottom: 10px;}
+    .txtup { text-align: center; height: 34px; line-height: 34px; font-weight: normal; padding-right: 0; padding-left: 0;}
+    .txtup div { padding-left: 0;}
+    .up1, .up2 { margin-bottom: 0; padding-top: 10px; }
+    .submint { padding-top: 0;}
+    #border_bo_fff { border-bottom: 1px solid #fff;background: #f2f2f2;}
+    #bs-example-navbar-collapse-2 {}
+
+    .navbar .navlist{ float: right;margin: 0;}
+    .navbar .navlist > li {float: left;}
+    .navbar .navlist > li > a { height: 43px; line-height: 43px; padding: 1px 7px; color: #999999; border-radius: 0;}
+    .navbar .navlist > li > a:hover { background: #aaa; color: #fff}
+
+    .member_ca { background: cover;}
+    .logo{ width: 100%; height: 200px; display: block;  margin: 30px 0 0 0; background: url(/public/images/site/logo.png) no-repeat center;}
+    .lsdete { text-align: center; color: #307ECC; cursor: pointer;}
+    .lsdete2 { display: none;}
+    .logo_css .panel,.logo_css .panel { width: 400px; margin-left: auto; margin-right: auto; margin-top: 10%;}
+    .rest_ko { width: 900px; margin-left: auto; margin-right: auto;}
+    .basic_form { padding: 3% 0;}
+    .yuqi_btn {}
+    .yuqi_btn_shouji { display: none;}
+    .yuqi_input { }
+    .yuqi_select {}
+    .loan_select {}
+    .modal-content { width: 140%;margin-left: -20%;}
+    .body_set { width: 800px; margin: 0 auto;}
+    .loan_list {width: 50%; float: left;}
+    .loanlist .loan_deadline .input-group-btn .btn_load_sj {}
+
+}
+
+

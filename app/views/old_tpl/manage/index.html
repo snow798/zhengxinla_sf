@@ -1,0 +1,17 @@
+{{partial("manage/header")}}
+<div class="row hao_tab">
+    <div class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">会员管理<a href="/manage/addmember" class="fr float_right">新增会员</a></div>
+	  <!-- Table -->
+	  <div class="panel-body" id="memberlist">	  
+		  <div class="memberlist table-responsive"></div>
+		  <div class="pagination"></div>
+	  </div>
+	</div>
+</div>
+{{partial("public/globalscript")}}
+{{partial("manage/memberlist_js")}}
+{{partial("public/page_js")}}
+<script src="{{__static}}js/default/manage/index.js"></script>
+{{partial("manage/footer")}}

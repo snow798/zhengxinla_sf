@@ -1,0 +1,16 @@
+<script type="text/html" id="loanlist_js">
+
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+       <ul class="feed">
+           {each list as tic i}
+           <li>
+               <p class="be_title ">主题：{tic.subject}</p>
+               <p class="be_time">时间：{tic.addtime}</p>
+               <p style="font-size: 12px;">反馈人：<a class="be_jigou" data-id="{tic.member_id}">{tic.companyname}</a></p>
+               <div class="be_conten"><span>内容：</span><p>{tic.content}</p></div>
+           </li>
+           {/each}
+       </ul>
+    </div>
+
+</script>

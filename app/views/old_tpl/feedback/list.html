@@ -1,0 +1,75 @@
+{{partial("manage/header")}}
+<div class="row hao_tab">
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">问题反馈管理</div>
+    <!-- Table -->
+    <br/>
+    <div class="panel-body" id="loanlist">
+        <div class="loanlist table-responsive" style="border: 0;"></div>
+        <div class="pagination" style="float: right; "></div>
+    </div>
+    {{partial("feedback/list_js")}}
+    {{partial("public/page_js")}}
+</div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">被担保人信息</h4>
+            </div>
+            <div class="modal-body" style=" padding: 0;">
+                <div class=" col-md-12 col-xs-12 " id="check_table">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="2"  id="check_copmtitle"><h1><span class="show_companyname"></span></h1></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>公司全称</td>
+                            <td>&nbsp;&nbsp;<span class="show_companyname"></span></td>
+                        </tr>
+                        <tr>
+                            <td>地址</td>
+                            <td>&nbsp;&nbsp;<span class="show_address"></span></td>
+
+                        </tr>
+
+                        <tr>
+                            <td>电子邮件</td>
+                            <td>&nbsp;&nbsp;<span class="show_email"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <blockquote class="container-fluid"  style="border: solid 1px #f2f2f2; border-left: solid 5px #f2f2f2;height: auto; overflow: auto;">
+                        <div class="row-fluid">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="member_ca"> 联系人1：<span class="show_contact1"></span></p>
+                                电话：<cite><span class="show_contact1_phone"></span></cite>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <p class="member_ca"> 联系人2：<span class="show_contact2"></span></p>
+                                电话：<cite><span class="show_contact2_phone"></span></cite>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+{{partial("public/globalscript")}}
+<script src="{{__static}}js/default/feedback/list.js"></script>
+{{partial("manage/footer")}}
+

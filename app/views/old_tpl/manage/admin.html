@@ -1,0 +1,17 @@
+{{partial("manage/header")}}
+<div class="panel panel-default hao_tab">
+    <div class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">管理员列表<a href="/manage/addadmin" class="fr float_right">新增管理员</a></div>
+	  <!-- Table -->
+	  <div class="panel-body" id="adminlist">
+		  <div class="adminlist"></div>
+		  <div class="pagination"></div>
+      </div>
+	</div>
+ </div>
+{{partial("public/globalscript")}}
+{{partial("manage/adminlist_js")}}
+{{partial("public/page_js")}}
+<script src="{{__static}}js/default/manage/admin.js"></script>
+{{partial("manage/footer")}}

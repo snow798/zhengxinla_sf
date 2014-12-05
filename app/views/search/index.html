@@ -1,0 +1,81 @@
+
+<form class="bs-example bs-example-form css-form" name="search" ng-submit="submint()" id="search_form">
+<div class="row">
+	<i class="logo hidden-xs hidden-sm"></i>
+	<i class="logo hidden-md hidden-lg"></i>
+</div>
+
+<div class="row hao_row">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="tabbable" id="tabs-959981">
+                    <ul class="nav nav-tabs">
+                        <li ng-class="{ 'active': vm.searchtype== '1'}">
+                            <a href="javascript:;" data-ng-click=" vm.searchtype= '1' " id="btn_per">个人查询</a>
+                        </li>
+                        <li ng-class="{ 'active': vm.searchType== '2'}">
+                            <a href="javascript:;" data-ng-click=" vm.searchtype= '2' "  id="btn_comp">公司查询</a>
+                        </li>
+                    </ul>
+
+                            <div class="row hao_row">
+                                <div class="tab-content">
+
+                                 <form rel="form" name="search" novalidate>
+
+                                  <div class="tab-pane  active"  id="pane1" ng-show=" vm.searchtype == '1' ">
+                                    <div class="col-xs-12 col-md-2 m-b-10">
+                                         <input data-ng-model="vm.realname" value="" type="text" class="form-control keyuplisner" name="username" placeholder="姓名" id="username" chinesename>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4 m-b-10">
+                                            <input data-ng-model="vm.idcard" value="" type="text" class="form-control keyuplisner" name="idcard" placeholder="身份证号码" style="padding-right: 6px;" chinaid>
+                                     </div>
+
+                                      <div class="col-xs-12 col-md-3 m-b-10">
+                                          <select class="form-control selecter" data-ng-model="vm.reason" ng-init=" vm.reason= 1 ">
+                                              <option value="1" ng-selected="true">贷款审批</option>
+                                              <option value="2">担保审批</option>
+                                          </select>
+                                      </div>
+                                  </div>
+
+                                  <div class="tab-pane" ng-show=" vm.searchtype == '2' " id="pane2" style="display: block;">
+                                    <div class="col-xs-12 col-md-4 m-b-10">
+                                        <input data-ng-model="vm.compname"  type="text" class="form-control keyuplisner" name="compname" placeholder="公司名称" chinesename>
+                                    </div>
+                                    <div class="col-xs-12 col-md-5 m-b-10">
+                                        <input data-ng-model="vm.compid"  type="text" class="form-control keyuplisner" name="compid" placeholder="组织机构代码">
+                                    </div>
+                                  </div>
+
+                               </form>
+
+                                </div>
+                                <div class="col-xs-12 col-md-3 m-b-10">
+                                    <button class="col-xs-12 btn btn-primary search-submit" type="submit">查询</button>
+                                </div>
+                            </div>
+                    <div id="search_info" style="display: block;" ng-show="infoStatus">
+                        <div ng-show="searchType== 'p' " >
+                          <div class="alert alert-warning alert-dismissible" role="alert">
+                            <strong>提示：</strong>
+                            <!--<span>请输入查询条件</span>-->
+                                <span ng-show="search.username.$pristine">姓名不能为空.</span>
+                                <span ng-show="search.username.$dirty && search.username.$invalid">姓名无效！</span>
+                                <span ng-show="search.username.$dirty && search.username.$valid">
+                                    <span ng-show="search.idcard.$pristine">身份证号码不能为空.</span>
+                                    <span ng-show="search.idcard.$dirty && search.idcard.$invalid">身份证号码无效！</span>
+                                    <span ng-show="search.idcard.$dirty && search.idcard.$valid">正在查询……</span>
+                                </span>
+                          </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div id="countdowner"></div>
+<!-- Button trigger modal -->

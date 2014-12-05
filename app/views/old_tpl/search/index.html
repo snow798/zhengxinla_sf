@@ -1,0 +1,76 @@
+{{partial("public/header")}}
+
+<form class="bs-example bs-example-form" action="" method="POST" name="search" id="search_form">
+<div class="row">
+	<i class="logo hidden-xs hidden-sm"></i>
+	<i class="logo hidden-md hidden-lg"></i>
+</div>
+
+<div class="row hao_row">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="tabbable" id="tabs-959981">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#pane1" data-toggle="tab" id="btn_per">个人查询</a>
+                        </li>
+                        <li>
+                            <a href="#pane2" data-toggle="tab" id="btn_comp">公司查询</a>
+                        </li>
+                    </ul>
+
+                            <div class="row hao_row">
+                                <div class="tab-content">
+                                <div class="tab-pane  active"  id="pane1">
+                                    <div class="col-xs-12 col-md-2 m-b-10">
+                                         <input required="required" type="text" maxlength="8" class="form-control keyuplisner" name="name" placeholder="姓名" id="username">
+                                    </div>
+                                    <div class="col-xs-12 col-md-4 m-b-10">
+                                            <input required="required" type="text" maxlength="18" class="form-control keyuplisner" name="keyword" placeholder="身份证号码" style="padding-right: 6px;">
+                                     </div>
+
+                                      <div class="col-xs-12 col-md-3 m-b-10">
+                                             <select class="form-control selecter" id="sdk">
+                                             {% for key,val in reason %}
+                                                 <option value="{{ key }}">{{ val }}</option>
+                                             {% endfor %}
+                                                </select>
+                                      </div>
+                                </div>
+
+                                <div class="tab-pane" id="pane2">
+                                    <div class="col-xs-12 col-md-4 m-b-10">
+                                        <input required="required" type="text" maxlength="8" class="form-control keyuplisner" name="compname" placeholder="公司名称">
+                                    </div>
+                                    <div class="col-xs-12 col-md-5 m-b-10">
+                                        <input required="required" type="text" maxlength="10" class="form-control keyuplisner" name="compid" placeholder="组织机构代码">
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="col-xs-12 col-md-3 m-b-10">
+                                    <a target="_blank" class="col-xs-12 btn btn-primary search-submit" type="submit" id="search-submit">查询</a>
+                                </div>
+                            </div>
+                    <div id="search_info">
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <strong>提示：</strong>
+                            <span>请输入查询条件</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div id="countdowner"></div>
+<!-- Button trigger modal -->
+
+{{partial("public/globalscript")}}
+<script type="text/javascript" src="{{__static}}/js/canvasloader-min.js"></script>
+<script type="text/javascript" src="{{__static}}/js/sco.countdown.js"></script>
+<script src="{{__static}}js/default/search/index.js"></script>
+
+{{partial("public/footer")}}

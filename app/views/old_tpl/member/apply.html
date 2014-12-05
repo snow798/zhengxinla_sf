@@ -1,0 +1,62 @@
+{{partial("public/header-out")}}
+
+  <div class="row hao_tab">
+    <div class="panel panel-default body_set">
+      <!-- Default panel contents -->
+      <div class="panel-heading">申请加入</div>
+      
+      <div class="panel-body">
+	      <!-- Table -->
+	      <form class="form-horizontal basic_form"  id="commentForm">
+	      	
+	      	<div class="form-group">
+	      		<label class="control-label col-xs-4">公司名称</label>
+	      		<div class="col-xs-8 col-md-4">
+	      			<input type="text" class="form-control" name="companyname" placeholder="请输入公司名称">	   
+	      		</div>
+	      	</div>
+            <div class="form-group">
+                  <label class="control-label col-xs-4">公司地址</label>
+                  <div class="col-xs-8 col-md-4">
+                      <input type="text" class="form-control" name="address" placeholder="请输入公司地址">
+                  </div>
+            </div>
+	      	<div class="form-group">
+	      		<label class="control-label col-xs-4">联系人</label>
+	      		<div class="col-xs-8 col-md-4">
+	      			<input type="text" class="form-control" name="contact1" placeholder="请输入联系人">
+	      		</div>
+	      	</div>
+	      	<div class="form-group">
+	      		<label class="control-label col-xs-4">联系电话</label>
+	      		<div class="col-xs-8 col-md-4">
+	      			<input type="text" class="form-control" name="contact1_phone" placeholder="请输入联系电话">
+	      		</div>
+	      	</div>
+	      	<div class="form-group">
+	      		<label class="control-label col-xs-4">邮箱</label>
+	      		<div class="col-xs-8 col-md-4">
+	      			<input type="text" class="form-control" name="email" placeholder="请输入邮箱">
+	      		</div>
+	      	</div>	      	
+	      	<div class="form-group">
+	      		<label class="control-label col-xs-4">验证码</label>
+	      		<div class="col-xs-5 col-md-2">
+      				<input type="text" class="form-control" name="captcha" placeholder="">
+	      		</div>
+	      		<div class="col-xs-1 yanzheng"><img src="" class="captcha"></div>
+	      	</div>	      	
+	      	<div class="form-group">
+	      		<label class="control-label col-xs-4"></label>
+	      		<div class="col-xs-4">
+	      			<button class="btn btn-primary btn-lg" id="apply-submit">提交申请</button>
+                    <span class="text-warning text-danger" id="tishi"></span>
+	      		</div>
+	      	</div>
+	      </form>	      	      
+	   </div>
+    </div>
+  </div>
+{{partial("public/globalscript")}}
+<script src="{{__static}}js/default/menber/apply.js"></script>
+{{partial("public/footer")}}

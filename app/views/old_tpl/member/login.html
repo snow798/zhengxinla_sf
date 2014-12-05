@@ -1,0 +1,52 @@
+{{partial("public/header-out")}}
+<div class="row hao_tab logo_css" id="member_login">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">用户登录</div>
+        <div class="panel-body">
+            <!-- Table -->
+            <form class="form-horizontal basic_form" id="commentForm"  role="form" >
+
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-3">账号</label>
+                    <div class="col-xs-12 col-md-8">
+                        <input type="text" class="form-control required" name="name" placeholder="请输入登录账号" autocomplete="off" ng-model="user.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-3">密码</label>
+                    <div class="col-xs-12 col-md-8">
+                        <input type="password" class="form-control required" name="password"  placeholder="请输入登录密码" autocomplete="off" ng-model="user.password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-3">验证码</label>
+                    <div class="col-xs-12 col-md-8">
+                        <div class="col-xs-8 col-md-8" style="padding-left: 0; padding-right: 0;">
+                            <input type="text" class="form-control" name="captcha" ng-model="user.captcha">
+                        </div>
+                        <div class="col-xs-4 col-md-4" style="padding-left: 0; padding-right: 0;"><img src="" class="captcha">		</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-6 col-md-3"></label>
+                    <div class="col-xs-12 col-md-8">
+                        <button class="btn btn-primary col-md-8" id="login-submit">&nbsp;&nbsp;登&nbsp;&nbsp;录&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{partial("public/globalscript")}}
+<script src="{{__static}}js/default/menber/login.js"></script>
+        <script>
+            /*$(function(){
+                var t= $('input[name=password]');
+                    t.attr('type','text');
+            })*/
+
+
+
+        </script>
+{{partial("public/footer")}}

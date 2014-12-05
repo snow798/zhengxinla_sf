@@ -1,0 +1,128 @@
+<div id="info-detail" ms-controller="info-detail">
+    <div class="row">
+        <h2>个人信用报告</h2>
+        <p>报告编号:{%user.no%}</p>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>被查询者姓名</th>
+                    <th>被查询者证件类型</th>
+                    <th>被查询者证件号码</th>
+                    <th>查询操作员</th>
+                    <th>查询原因</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{%user.name%}</td>
+                    <td>{%user.idType%}</td>
+                    <td>{%user.idNo%}</td>
+                    <td>{%user.user%}</td>
+                    <td>{%user.res%}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row uniform">
+        <h2>授信及负债信息概要</h2>
+        <p>报告编号:{%user.no%}</p>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>贷款法人机构数</th>
+                    <th>贷款机构数</th>
+                    <th>笔数</th>
+                    <th>合同总额</th>
+                    <th>余额</th>
+                    <th>最近6个月平均应还款</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{%sum.legalAgencyNum%}</td>
+                    <td>{%sum.agencyNum%}</td>
+                    <td>{%sum.amount%}</td>
+                    <td>{%sum.total%}</td>
+                    <td>{%sum.balance%}</td>
+                    <td>{%sum.ave%}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="row uniform">
+        <h2>贷款交易信息明细</h2>
+        <div ms-repeat-row="details">
+            <p>{%row.info.beginDate%}机构"{%row.info.user%}"发放的贷款,业务号{%row.info.no%},授信额度{%row.info.money%},{%row.info.typeText%},截至{%row.info.endDate%}</p>
+            <table class="table table-striped table-bordered m-b-0">
+                <thead>
+                    <tr>
+                        <th>本金余额</th>
+                        <th>剩余还款期数</th>
+                        <th>本月应还款</th>
+                        <th>应还款日</th>
+                        <th>本月实还款</th>
+                        <th>最近一次还款日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{%row.principalBalance%}</td>
+                        <td>{%row.remainingRepaymentInstallments%}</td>
+                        <td>{%row.monthShouldRepayment%}</td>
+                        <td>{%row.repaymentDate%}</td>
+                        <td>{%row.realRepayment%}</td>
+                        <td>{%row.lastRepaymentDate%}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>当前逾期期数</th>
+                        <th>当前逾期金额</th>
+                        <th>逾期31-60天</br>未还本金</th>
+                        <th>逾期61-90天</br>未还本金</th>
+                        <th>逾期91-180天</br>未还款本金</th>
+                        <th>逾期180天以上</br>未还本金</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{%row.currentInstallmentsOverdue%}</td>
+                        <td>{%row.currentAmountOverdue%}</td>
+                        <td>{%row.overdue31_60%}</td>
+                        <td>{%row.overdue61_90%}</td>
+                        <td>{%row.overdue91_180%}</td>
+                        <td>{%row.overdueMoreThan180%}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <h2>信贷审批查询记录明细</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>查询日期</th>
+                    <th>查询操作员</th>
+                    <th>查询原因</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ms-repeat-ed="enquiryDetails">
+                    <td>{%ed.no%}</td>
+                    <td>{%ed.enquiryDate%}</td>
+                    <td>{%ed.user%}</td>
+                    <td>{%ed.res%}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
